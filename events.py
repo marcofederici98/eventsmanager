@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import pandas as pd
 import time
-from flask import Flask, render_template
+#from flask import Flask, render_template
 
 
 # In[2]:
@@ -22,7 +22,7 @@ df=pd.read_excel("persone_famose.xlsx")
 # In[3]:
 
 
-df=pd.read_csv('vips.csv', delimiter=';' )
+df=pd.read_csv('persone_famose.xlsx', delimiter=';' )
 
 
 # In[4]:
