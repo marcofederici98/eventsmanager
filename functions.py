@@ -24,7 +24,7 @@ def csv_data(file_path):
             return df
 
 def file_to_data(file_path):
-    ext = file_ext(file_path)
+    ext = file_ext(file_path.filename)
     if ext in ['.csv', '.xlsx', '.xlx']:
         if ext == '.csv':
             data = csv_data(file_path)
@@ -68,7 +68,7 @@ def search_data(data):
 
 def df_to_html(df):
     #creo doc e aggiungo stile
-    code='<form action="/submit" method="post" id="MyTable"><table>'
+    code='<form><table id="myTable">'
     code+='<tr>'
     #aggiungere intestazioni
     for i in df:
@@ -84,12 +84,119 @@ def df_to_html(df):
             code+=df.T[i][j]
             code+='</td>'
         code+='</tr>'
-    code+='</table><input type="submit" value="Submit" form="MyTable"></form>'
+    code+='</table>'
     
     return code
 
+
+def add_script(html):
+    button = '<button id="submit-btn" action="/submit-form">Submit</button>'
+    closing = '</table></body></html>'
+    script = '''<head>
+  <title>Table with Checkboxes</title>
+  <!-- Include jQuery library -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('#submit-btn').on('click', function() {
+        var checkedRows = [];
+  
+        $('#myTable tbody tr').each(function() {
+          var row = $(this);
+          var checkbox = row.find('input[type=checkbox]');
+          if (checkbox.prop('checked')) {
+            checkedRows.push({
+              column1: row.find('td:eq(0)').text(),
+              column2: row.find('td:eq(1)').text(),
+              column3: row.find('td:eq(2)').text()
+            });
+          }
+        });
+  
+        $.ajax({
+          type: 'POST',
+          url: '/submit-form',
+          data: JSON.stringify(checkedRows),
+          contentType: 'application/json;charset=UTF-8',
+          success: function(response) {
+            console.log(response)
+            console.log(checkedRows)
+
+            window.location.href = "/success";
+          },
+          error: function(xhr, status, error) {
+            console.log(xhr.responseText);
+          }
+        });
+      });
+    });
+  </script>'''
+    css = '''<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+#myInput {
+  width: 100%;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  font-size: 18px;
+}
+th:first-child {
+  width: 200px;
+}
+
+td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  font-size: 14px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+input.checks {
+            width: 25px;
+            height: 25px;
+        }
+img {
+  width: 200px; /* Larghezza prestabilita */
+  height: 200px; /* Altezza prestabilita */
+  object-fit: cover; /* Ritaglia l'immagine alle dimensioni definite */
+border-radius: 10%
+}
+button {
+        padding: 10px 20px;
+        background-color: #D40593;
+        color: white;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+	  margin: 0 auto;
+	  display: flex;
+	  justify-content: center;
+}
+</style></head>'''
+    opening = '<!DOCTYPE html><html>'
+    page = opening + script + css + html + button + closing
+    return page
+    
 def pipeline(file_path):
     data = file_to_data(file_path)
+    print('data:', data)
     df = search_data(data)
+    print('df:', df)
     html = df_to_html(df)
-    return html
+    print('html:', html)
+    page = add_script(html)
+    return page
