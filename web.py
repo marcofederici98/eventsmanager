@@ -6,7 +6,7 @@ import pandas as pd
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 def index():
     return render_template('homepage.html')
 
@@ -19,6 +19,7 @@ def upload():
             return functions.pipeline(data)
         else:
             return 'error, unvalid file type'
+    return "test"
 
 @app.route('/submit-form', methods=['POST'])
 def submit_form():

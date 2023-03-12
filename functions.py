@@ -47,7 +47,7 @@ def search_data(data):
         search = ddg_images(query, max_results=1)
         url = search[0]['image']
         idb = 'button_' + (query[:-6].replace(' ', '_'))
-        button=f'<a href="{url}" target="blank"> <button id="{idb}">Visualizza intera</button> </a>'
+        button=f'<a href="{url}" target="blank"> <span id="{idb}">Visualizza intera</span> </a>'
         img_html='<img src="'+url+f'" height="{ht}">'
         images.append(img_html)
         buttons.append(button)
@@ -68,7 +68,7 @@ def search_data(data):
 
 def df_to_html(df):
     #creo doc e aggiungo stile
-    code='<form><table id="myTable">'
+    code='<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.."><form><table id="myTable">'
     code+='<tr>'
     #aggiungere intestazioni
     for i in df:
@@ -131,6 +131,34 @@ def add_script(html):
       });
     });
   </script>'''
+    
+    script2 = '''
+<script>
+function myFunction() {
+  // Declare variables
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+
+  '''
+
     css = '''<style>
 table {
   font-family: arial, sans-serif;
@@ -175,6 +203,18 @@ img {
   object-fit: cover; /* Ritaglia l'immagine alle dimensioni definite */
 border-radius: 10%
 }
+a {
+        padding: 10px 20px;
+        background-color: #D40593;
+        color: white;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+	  margin: 0 auto;
+	  display: flex;
+	  justify-content: center;
+}
+
 button {
         padding: 10px 20px;
         background-color: #D40593;
@@ -188,7 +228,7 @@ button {
 }
 </style></head>'''
     opening = '<!DOCTYPE html><html>'
-    page = opening + script + css + html + button + closing
+    page = opening + script + script2 + css + html + button + closing
     return page
     
 def pipeline(file_path):
