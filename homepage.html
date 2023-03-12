@@ -73,10 +73,10 @@
         <h1>Events Manager</h1> </center>
       </div>
       <p>Carica la lista invitati in formato csv o excel</p>
-      <form action="#">
-        <input type="file">
-        <button type="submit">Invio</button>
-      </form>
+<form method="POST" action="/events" enctype="multipart/form-data">
+  <input type="file" name="data_file">
+  <button type="submit">Upload CSV</button>
+</form> 
 <p><b>Events Manager v 0.1 - Marco Federici 2023 ©</b></p>
     </div>
   </body>
