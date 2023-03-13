@@ -17,7 +17,7 @@ def upload():
         global data
         data = request.files['data_file']
         if data.filename != '':  
-            return functions.pipeline(data, url_for("static", filename="styles/events.css"))
+            return functions.pipeline(data)
         else:
             return 'error, unvalid file type'
     return "test"
