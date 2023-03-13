@@ -20,7 +20,7 @@ def upload():
             return functions.pipeline(data)
         else:
             return 'error, unvalid file type'
-    return "test"
+    return "Errore, controlla il tipo di file caricato"
 
 @app.route('/submit-form', methods=['POST'])
 def submit_form():

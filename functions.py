@@ -2,15 +2,7 @@ import pandas as pd
 from duckduckgo_search import ddg_images
 
 def file_ext(filename):
-    if filename.endswith('.csv'):
-        ext = '.csv'
-    elif filename.endswith('.xlsx'):
-        ext = '.xlsx'
-    elif filename.endswith('xlx'):
-        ext = '.xlx'
-    else:
-        return None
-    return ext
+    return filename.split('/')[-1].split('.')[-1]
 
 def csv_data(file_path):
     delimiters = [',', ';']
@@ -25,8 +17,9 @@ def csv_data(file_path):
 
 def file_to_data(file_path):
     ext = file_ext(file_path.filename)
-    if ext in ['.csv', '.xlsx', '.xlx']:
-        if ext == '.csv':
+    data = None
+    if ext in ['csv', 'xlsx', 'xlx']:
+        if ext == 'csv':
             data = csv_data(file_path)
         else:
             data = pd.read_excel(file_path)
@@ -102,16 +95,16 @@ def add_script(html):
     '''
     button = '<button id="submit-btn" action="/submit-form">Submit</button>'
     closing = '</table></body></html>'  
-    
+
     page = head + html + button + closing
     return page
     
 def pipeline(file_path):
     data = file_to_data(file_path)
-    print('data:', data)
+    #print('data:', data)
     df = search_data(data) 
-    print('df:', df)
+    #print('df:', df)
     html = df_to_html(df)
-    print('html:', html)
+    #print('html:', html)
     page = add_script(html)
     return page
