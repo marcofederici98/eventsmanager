@@ -1,0 +1,60 @@
+body {
+    background: linear-gradient(to right, #D40593, #AD28E8);
+    font-family: sans-serif;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    width: 500px;
+    height: 350px;
+    background-color: white;
+    opacity: 0.90;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 30px;
+    padding-top: 50px;
+    padding-bottom: 50px
+}
+
+h1 {
+    font-size: 48px;
+    color: #D40593;
+    margin: 0;
+}
+
+img {
+    height: 50px;
+    margin-right: 10px;
+}
+
+p {
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+input[type="file"] {
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #D40593;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+}
