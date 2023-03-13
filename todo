@@ -1,8 +1,7 @@
 Events Manager:
--Lo script per il pulsante esporta è ora associato anche ai pulsanti per la visualizzazione intera delle foto; X
 -Crea lista con arrivo non arrivo e restituisci csv completo;
--Creare barra di ricerca con js on change; X
--Sostituire crediti con info - credits tooltip
 -Creare file requirements
 -Al completamento provare l'app hostata su github
 -Cambia colori
+-Utilizzo di bootstrap
+-Controllo formattazione file

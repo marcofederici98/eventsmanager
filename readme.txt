@@ -16,10 +16,3 @@ icon v0: esempio icona;
 homepage: esempio di form dove caricare il file
 events.html: il prodotto della renderizzazione del 	codice in python;
 events.py/.ipynib: sono il codice puro ed il notebook del renderizzatore;
-***************
-DA FARE
-***************
--upload function home-page (python o javascript)
--search function javascript events-page.html;
--id oggetti e gestione colonne python;
--scraper immagini indipendente, google api, duck duck go, o altro;
