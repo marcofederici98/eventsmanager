@@ -35,6 +35,7 @@ def search_data(data):
     images = []
     buttons = []
     ht = 200
+    df['ghost'] = data[name_cols[0]] + ' ' + data[name_cols[1]]
     df['query'] = data[name_cols[0]] + ' ' + data[name_cols[1]] + ' volto'
     for query in df['query']:
         search = ddg_images(query, max_results=1)
@@ -56,7 +57,7 @@ def search_data(data):
         checkbox = f'<input id="{idc}" type="checkbox" form="MyTable" class="checks"/>'
         checkboxes.append(checkbox)
     df['Arrivo'] = checkboxes
-    data_cols = ['Pic'] + name_cols + others + ['Arrivo']
+    data_cols = ['ghost'] + ['Pic'] + name_cols + others + ['Arrivo']
     return df[data_cols]
 
 def df_to_html(df):

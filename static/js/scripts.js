@@ -43,9 +43,7 @@ function search() {
     for (i = 0; i < tr.length; i++) {
       td = tr[i].getElementsByTagName("td");
       if (td[1]) {
-        txtValue1 = td[1].textContent || td[1].innerText;
-        txtValue2 = td[2].textContent || td[2].innerText;
-        txtValue = txtValue1 + txtValue2;
+        txtValue = td[0].textContent || td[0].innerText;
         if (txtValue.toUpperCase().indexOf(filter) > -1) {
           tr[i].style.display = "";
         } else {

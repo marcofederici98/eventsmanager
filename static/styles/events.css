@@ -16,6 +16,11 @@ table {
     padding: 14px;
     margin-bottom: 4px;
 }
+
+th:nth-child(1),
+      td:nth-child(1){
+        display: none;
+      }
   
 th {
     border: 1px solid #dddddd;
@@ -24,7 +29,7 @@ th {
     font-size: 18px;
 }
 
-th:first-child {
+th:nth-child(2) {
     width: 200px;
 }
   
