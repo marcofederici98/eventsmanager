@@ -33,7 +33,7 @@ $(document).ready(function() {
 });
 
 
-function myFunction() {
+function search() {
     // Declare variables
     var input, filter, table, tr, td, i, txtValue;
     input = document.getElementById("myInput");
