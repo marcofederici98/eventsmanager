@@ -90,17 +90,20 @@ def df_to_html(df):
 
 
 def add_script(html):
+    head = '''
+    <!DOCTYPE html><html>
+    <head>
+      <title>Table with Checkboxes</title>
+      <!-- Include jQuery library -->
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="./static/js/scripts.js"></script>
+      <link rel="stylesheet" href="./static/styles/events.css">
+    </head>
+    '''
     button = '<button id="submit-btn" action="/submit-form">Submit</button>'
-    closing = '</table></body></html>'
-    script = '''<head>
-  <title>Table with Checkboxes</title>
-  <!-- Include jQuery library -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="./static/js/scripts.js"></script>'''
+    closing = '</table></body></html>'  
     
-    css = '<link rel="stylesheet" href="./static/styles/events.css"></head>'
-    opening = '<!DOCTYPE html><html>'
-    page = opening + script + css + html + button + closing
+    page = head + html + button + closing
     return page
     
 def pipeline(file_path):
