@@ -61,7 +61,10 @@ def search_data(data):
 
 def df_to_html(df):
     #creo doc e aggiungo stile
-    code='<input type="text" id="myInput" onkeyup="search()" placeholder="Ricerca per nome..."><form><table id="myTable">'
+    code='''<div>
+        <input type="text" id="myInput" onkeyup="search()" placeholder="Ricerca per nome...">
+	    <button id="submit-btn" action="/submit-form">Esporta</button>
+        </div><table id="myTable">'''
     code+='<tr>'
     #aggiungere intestazioni
     for i in df:
@@ -93,10 +96,9 @@ def add_script(html):
       <link rel="stylesheet" href="./static/styles/events.css">
     </head>
     '''
-    button = '<button id="submit-btn" action="/submit-form">Submit</button>'
     closing = '</table></body></html>'  
 
-    page = head + html + button + closing
+    page = head + html + closing
     return page
     
 def pipeline(file_path):
