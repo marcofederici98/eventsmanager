@@ -90,7 +90,7 @@ def add_script(html):
     head = '''
     <!DOCTYPE html><html>
     <head>
-      <title>Table with Checkboxes</title>
+      <title>Events</title>
       <!-- Include jQuery library -->
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <script src="./static/js/scripts.js"></script>
