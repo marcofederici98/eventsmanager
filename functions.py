@@ -68,7 +68,7 @@ def search_data(data):
 
 def df_to_html(df):
     #creo doc e aggiungo stile
-    code='<input type="text" id="myInput" onkeyup="search()" placeholder="Search for names.."><form><table id="myTable">'
+    code='<input type="text" id="myInput" onkeyup="search()" placeholder="Ricerca per nome..."><form><table id="myTable">'
     code+='<tr>'
     #aggiungere intestazioni
     for i in df:
