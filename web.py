@@ -1,6 +1,7 @@
-from flask import Flask, render_template, render_template_string, request, send_file
+from flask import Flask, render_template, render_template_string, request, send_file, url_for
 import functions
 import pandas as pd
+import os
 
 
 app = Flask(__name__)
@@ -16,7 +17,7 @@ def upload():
         global data
         data = request.files['data_file']
         if data.filename != '':  
-            return functions.pipeline(data)
+            return functions.pipeline(data, url_for("static", filename="styles/events.css"))
         else:
             return 'error, unvalid file type'
     return "test"

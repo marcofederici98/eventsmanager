@@ -89,7 +89,7 @@ def df_to_html(df):
     return code
 
 
-def add_script(html):
+def add_script(html, csspath):
     button = '<button id="submit-btn" action="/submit-form">Submit</button>'
     closing = '</table></body></html>'
     script = '''<head>
@@ -158,85 +158,18 @@ function myFunction() {
 </script>
 
   '''
-
-    css = '''<style>
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-#myInput {
-  width: 100%;
-  font-size: 16px;
-  border: 1px solid #ddd;
-  margin-bottom: 12px;
-}
-
-
-th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-  font-size: 18px;
-}
-th:first-child {
-  width: 200px;
-}
-
-td {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-  font-size: 14px;
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
-input.checks {
-            width: 25px;
-            height: 25px;
-        }
-img {
-  width: 200px; /* Larghezza prestabilita */
-  height: 200px; /* Altezza prestabilita */
-  object-fit: cover; /* Ritaglia l'immagine alle dimensioni definite */
-border-radius: 10%
-}
-a {
-        padding: 10px 20px;
-        background-color: #D40593;
-        color: white;
-        border: none;
-        border-radius: 25px;
-        cursor: pointer;
-	  margin: 0 auto;
-	  display: flex;
-	  justify-content: center;
-}
-
-button {
-        padding: 10px 20px;
-        background-color: #D40593;
-        color: white;
-        border: none;
-        border-radius: 25px;
-        cursor: pointer;
-	  margin: 0 auto;
-	  display: flex;
-	  justify-content: center;
-}
-</style></head>'''
+    
+    css = '<link rel="stylesheet" href="' + csspath + '"></head>'
     opening = '<!DOCTYPE html><html>'
     page = opening + script + script2 + css + html + button + closing
     return page
     
-def pipeline(file_path):
+def pipeline(file_path, csspath):
     data = file_to_data(file_path)
     print('data:', data)
-    df = search_data(data)
+    df = search_data(data) 
     print('df:', df)
     html = df_to_html(df)
     print('html:', html)
-    page = add_script(html)
+    page = add_script(html, csspath)
     return page
