@@ -8,8 +8,6 @@ $(document).ready(function() {
         if (checkbox.prop('checked')) {
           checkedRows.push({
             column1: row.find('td:eq(0)').text(),
-            column2: row.find('td:eq(1)').text(),
-            column3: row.find('td:eq(2)').text()
           });
         }
       });

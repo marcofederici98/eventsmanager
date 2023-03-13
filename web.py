@@ -14,10 +14,11 @@ def index():
 @app.route('/events', methods=['GET', 'POST'])
 def upload():
     if 'data_file' in request.files:
-        global data
+        global df
         data = request.files['data_file']
-        if data.filename != '':  
-            return functions.pipeline(data)
+        if data.filename != '':
+            df = functions.pipeline(data)
+            return functions.pipeline2(df)
         else:
             return 'error, unvalid file type'
     return "Errore, controlla il tipo di file caricato"
@@ -31,7 +32,9 @@ def submit_form():
 @app.route('/success')
 def success():
     print('code:', checked_rows)
-    code = pd.DataFrame(checked_rows).to_excel('Arrivati.xlsx')
+    print(df)
+    code = pd.DataFrame(functions.colonna_arrivi(df, checked_rows)).to_excel('Arrivati.xlsx')
+    #code = pd.DataFrame(checked_rows).to_excel('Arrivati.xlsx')
     return send_file('Arrivati.xlsx')
 
     

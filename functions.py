@@ -107,7 +107,29 @@ def pipeline(file_path):
     #print('data:', data)
     df = search_data(data) 
     #print('df:', df)
+    return df
+
+def pipeline2(df):
     html = df_to_html(df)
     #print('html:', html)
     page = add_script(html)
     return page
+
+
+def colonna_arrivi(data, checked_rows):
+    arrivi=[]
+    a = list(data['ghost'])
+    b = list(pd.DataFrame(checked_rows)['column1'])
+    for i in a:
+        if i in b:
+            arrivi.append('Arrivato')
+        else:
+            arrivi.append('No')
+    columns = list(data.columns)
+    name_cols = columns[2:4]
+    others = columns[4:]
+    data['Arrivo'] = arrivi
+    data_cols = name_cols + others
+    final_data = data[data_cols]
+    final_data['Arrivo'] = arrivi
+    return final_data
