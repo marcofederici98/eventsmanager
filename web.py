@@ -1,15 +1,13 @@
-from flask import Flask, render_template, render_template_string, request, send_file, url_for
+from flask import Flask, render_template, request, send_file
 import functions
 import pandas as pd
-import os
 
-
-app = Flask(__name__)
+app = Flask(__name__, template_folder="templates")
 
 
 @app.route('/', methods=['GET'])
 def index():
-    return render_template('homepage.html')
+    return render_template('index.html')
 
 @app.route('/events', methods=['GET', 'POST'])
 def upload():
