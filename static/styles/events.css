@@ -66,6 +66,9 @@ a {
     margin: 0 auto;
     display: flex;
     justify-content: center;
+    text-decoration: none;
+    font-size: medium;
+
 }
 
 button {
@@ -78,4 +81,5 @@ button {
     margin: 0 auto;
     display: flex;
     justify-content: center;
+    font-size: medium;
 }

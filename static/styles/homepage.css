@@ -97,4 +97,24 @@ button {
     border: none;
     border-radius: 25px;
     cursor: pointer;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    font-size: medium;
 }
+a {
+    padding: 10px 20px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    font-size: medium;
+    text-decoration:  none;
+}
+.inline-elements {
+    display: inline-block;
+  }

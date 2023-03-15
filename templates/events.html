@@ -1,65 +1,12 @@
 <!DOCTYPE html><html>
-<head>
-<style>
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-#myInput {
-  width: 100%;
-  font-size: 16px;
-  border: 1px solid #ddd;
-  margin-bottom: 12px;
-}
-
-
-th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-  font-size: 18px;
-}
-th:first-child {
-  width: 200px;
-}
-
-td {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-  font-size: 14px;
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
-input.checks {
-            width: 25px;
-            height: 25px;
-        }
-img {
-  width: 200px; /* Larghezza prestabilita */
-  height: 200px; /* Altezza prestabilita */
-  object-fit: cover; /* Ritaglia l'immagine alle dimensioni definite */
-border-radius: 10%
-}
-button {
-        padding: 10px 20px;
-        background-color: #D40593;
-        color: white;
-        border: none;
-        border-radius: 25px;
-        cursor: pointer;
-	  margin: 0 auto;
-	  display: flex;
-	  justify-content: center;
-}
-</style>
-</head>
-<body>
-
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
-
-
-<table><tr><th>Pic</th><th>Personaggio</th><th>Arrivo</th></tr><tr><td><img src="https://www.kontrokultura.it/wp-content/uploads/2020/04/foto_alessia_marcuzzi_accusata_dai_fan.jpg" height="200"><br><a href="https://www.kontrokultura.it/wp-content/uploads/2020/04/foto_alessia_marcuzzi_accusata_dai_fan.jpg" target="blank"> <button id="Alessia_Marcuzzi">Visualizza intera</button> </a></td><td>Alessia Marcuzzi</td><td><form><input type="checkbox" class="checks"></form></td></tr><tr><td><img src="https://cdn.ultimenotizieflash.com/wp-content/uploads/2015/02/14182100/miuo-5.png" height="200"><br><a href="https://cdn.ultimenotizieflash.com/wp-content/uploads/2015/02/14182100/miuo-5.png" target="blank"> <button id="Michelle_Hunziker">Visualizza intera</button> </a></td><td>Michelle Hunziker</td><td><form><input type="checkbox" class="checks"></form></td></tr><tr><td><img src="https://m.media-amazon.com/images/I/71J00CF1OjL._AC_SX425_.jpg" height="200"><br><a href="https://m.media-amazon.com/images/I/71J00CF1OjL._AC_SX425_.jpg" target="blank"> <button id="Diletta_Leotta">Visualizza intera</button> </a></td><td>Diletta Leotta</td><td><form><input type="checkbox" class="checks"></form></td></tr><tr><td><img src="https://www.today.it/~media/horizontal-hi/18423714017556/emma-marrone-6-10.jpg" height="200"><br><a href="https://www.today.it/~media/horizontal-hi/18423714017556/emma-marrone-6-10.jpg" target="blank"> <button id="Emma_Marrone">Visualizza intera</button> </a></td><td>Emma Marrone</td><td><form><input type="checkbox" class="checks"></form></td></tr><tr><td><img src="" height="200"><br><a href="" target="blank"> <button id="Ruggero_Pasquarelli">Visualizza intera</button> </a></td><td>Ruggero Pasquarelli</td><td><form><input type="checkbox" class="checks"></form></td></tr><tr><td><img src="https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=100063667992817" height="200"><br><a href="https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=100063667992817" target="blank"> <button id="Laura_Pausini">Visualizza intera</button> </a></td><td>Laura Pausini</td><td><form><input type="checkbox" class="checks"></form></td></tr><tr><td><img src="https://media-assets.vanityfair.it/photos/621359be928ce01c39c2f4d7/master/w_2333,h_3500,c_limit/GettyImages-933727058.jpg" height="200"><br><a href="https://media-assets.vanityfair.it/photos/621359be928ce01c39c2f4d7/master/w_2333,h_3500,c_limit/GettyImages-933727058.jpg" target="blank"> <button id="Belen_Rodriguez">Visualizza intera</button> </a></td><td>Belen Rodriguez</td><td><form><input type="checkbox" class="checks"></form></td></tr><tr><td><img src="https://pbs.twimg.com/profile_images/801423774050566144/kgy9WoSj.jpg" height="200"><br><a href="https://pbs.twimg.com/profile_images/801423774050566144/kgy9WoSj.jpg" target="blank"> <button id="Francesco_Totti">Visualizza intera</button> </a></td><td>Francesco Totti</td><td><form><input type="checkbox" class="checks"></form></td></tr><tr><td><img src="http://www.lavocedelserchio.it/public/imgcache/a6/3f231551902f10128c7f8a2dd0d520.jpg" height="200"><br><a href="http://www.lavocedelserchio.it/public/imgcache/a6/3f231551902f10128c7f8a2dd0d520.jpg" target="blank"> <button id="Matteo_Salvini">Visualizza intera</button> </a></td><td>Matteo Salvini</td><td><form><input type="checkbox" class="checks"></form></td></tr></table>
+    <head>
+      <title>Events</title>
+      <!-- Include jQuery library -->
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="./static/js/scripts.js"></script>
+      <link rel="stylesheet" href="./static/styles/events.css">
+    </head>
+    <div>
+        <input type="text" id="myInput" onkeyup="search()" placeholder="Ricerca per nome...">
+	    <button id="submit-btn" action="/submit-form">Esporta</button>
+        </div><table id="myTable"><tr><th>ghost</th><th>Pic</th><th>nome</th><th>cognome</th><th>nome completo</th><th>Arrivo</th></tr><tr><td>francesco totti</td><td><img src="https://i.pinimg.com/originals/26/35/55/263555d3033d777438bb2ff66a30b062.jpg" height="200"><br><a href="https://i.pinimg.com/originals/26/35/55/263555d3033d777438bb2ff66a30b062.jpg" target="blank"> <span id="button_francesco_totti">Visualizza intera</span> </a></td><td>francesco</td><td>totti</td><td>francesco_totti</td><td><input id="check_francesco_totti" type="checkbox" form="MyTable" class="checks"/></td></tr><tr><td>donald trump</td><td><img src="https://www.globalist.it/wp-content/uploads/2019/02/00051D01-donald-trump.jpg" height="200"><br><a href="https://www.globalist.it/wp-content/uploads/2019/02/00051D01-donald-trump.jpg" target="blank"> <span id="button_donald_trump">Visualizza intera</span> </a></td><td>donald</td><td>trump</td><td>donald_trump</td><td><input id="check_donald_trump" type="checkbox" form="MyTable" class="checks"/></td></tr><tr><td>manuela arcuri</td><td><img src="https://www.caffeinamagazine.it/wp-content/uploads/2019/03/manuela-arcuri-1.jpg" height="200"><br><a href="https://www.caffeinamagazine.it/wp-content/uploads/2019/03/manuela-arcuri-1.jpg" target="blank"> <span id="button_manuela_arcuri">Visualizza intera</span> </a></td><td>manuela</td><td>arcuri</td><td>manuela_arcuri</td><td><input id="check_manuela_arcuri" type="checkbox" form="MyTable" class="checks"/></td></tr><tr><td>elsa frozen</td><td><img src="http://1.bp.blogspot.com/-x_bUqpEW2tE/UtK2X19yLXI/AAAAAAAAEtk/-40r2enqfFw/s1600/3.jpg" height="200"><br><a href="http://1.bp.blogspot.com/-x_bUqpEW2tE/UtK2X19yLXI/AAAAAAAAEtk/-40r2enqfFw/s1600/3.jpg" target="blank"> <span id="button_elsa_frozen">Visualizza intera</span> </a></td><td>elsa</td><td>frozen</td><td>elsa_frozen</td><td><input id="check_elsa_frozen" type="checkbox" form="MyTable" class="checks"/></td></tr><tr><td>giorgia meloni</td><td><img src="https://static.blitzquotidiano.it/wp/wp-content/uploads/2019/10/giorgia-meloni-ansa.jpg" height="200"><br><a href="https://static.blitzquotidiano.it/wp/wp-content/uploads/2019/10/giorgia-meloni-ansa.jpg" target="blank"> <span id="button_giorgia_meloni">Visualizza intera</span> </a></td><td>giorgia</td><td>meloni</td><td>giorgia_meloni</td><td><input id="check_giorgia_meloni" type="checkbox" form="MyTable" class="checks"/></td></tr><tr><td>napoleone bonaparte</td><td><img src="https://i1.wp.com/www.bznews24.it/wp-content/uploads/2020/07/25857d8c-65c0-416c-ac97-a85a99e27f9e.jpg?resize=683%2C1024&ssl=1" height="200"><br><a href="https://i1.wp.com/www.bznews24.it/wp-content/uploads/2020/07/25857d8c-65c0-416c-ac97-a85a99e27f9e.jpg?resize=683%2C1024&ssl=1" target="blank"> <span id="button_napoleone_bonaparte">Visualizza intera</span> </a></td><td>napoleone</td><td>bonaparte</td><td>napoleone_bonaparte</td><td><input id="check_napoleone_bonaparte" type="checkbox" form="MyTable" class="checks"/></td></tr><tr><td>gruppo pooh</td><td><img src="https://www.lettoquotidiano.it/wp-content/uploads/2020/04/Pooh-band-gruppo-musicale.jpg" height="200"><br><a href="https://www.lettoquotidiano.it/wp-content/uploads/2020/04/Pooh-band-gruppo-musicale.jpg" target="blank"> <span id="button_gruppo_pooh">Visualizza intera</span> </a></td><td>gruppo</td><td>pooh</td><td>gruppo_pooh</td><td><input id="check_gruppo_pooh" type="checkbox" form="MyTable" class="checks"/></td></tr></table></table></body></html>

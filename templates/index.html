@@ -14,7 +14,11 @@
       <p>Carica la lista invitati in formato csv o excel</p>
 <form method="POST" action="/events" enctype="multipart/form-data">
   <input type="file" name="data_file" accept=".xls,.xlsx,.csv">
-  <button type="submit">Upload CSV</button>
+
+  <div>
+    <button type="submit" class="inline-elements">Carica file</button>
+    <a href="/demo" class="inline-elements">Usa un file demo</a>
+  </div>
 </form>
 <div class="tooltip">Info 
   <span class="tooltiptext">Il file deve contenere nome e cognome nelle prime due colonne</span>

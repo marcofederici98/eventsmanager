@@ -9,6 +9,10 @@ app = Flask(__name__, template_folder="templates")
 def index():
     return render_template('index.html')
 
+@app.route('/demo')
+def demo():
+    return render_template('events.html')
+
 @app.route('/events', methods=['GET', 'POST'])
 def upload():
     if 'data_file' in request.files:
