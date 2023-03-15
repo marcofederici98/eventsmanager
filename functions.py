@@ -15,14 +15,28 @@ def csv_data(file_path):
         if df.shape[1]>1:
             return df
 
+def add_ghost(data):
+    columns = list(data.columns)
+    name_cols = columns [:2]
+    others = columns[2:]
+    data['ghost'] = data[columns[0]] + ' ' + data[columns[1]]
+    data_cols = ['ghost'] + name_cols + others
+    return data [data_cols]
+    
+
 def file_to_data(file_path):
-    ext = file_ext(file_path.filename)
+    if file_path == 'demo.xlsx':
+        ext = file_ext(file_path)
+    else:
+        ext = file_ext(file_path.filename)
     data = None
     if ext in ['csv', 'xlsx', 'xlx']:
         if ext == 'csv':
             data = csv_data(file_path)
         else:
             data = pd.read_excel(file_path)
+            if file_path == 'demo.xlsx':
+                data = add_ghost(data)
     else:
         return 'File non valido'
     return data
